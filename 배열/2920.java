@@ -52,3 +52,39 @@ public class Main {
 		scan.close();	// Scanner 닫기
 	}
 }
+
+
+
+/* 풀이 2 */
+
+import java.util.Scanner;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int array[] = new int[8];	// 입력값이 8개로 정해져 있으므로
+		String output = null;		// 출력값으로 계속 값들의 관계 체크
+		
+		for(int i=0; i<8; i++) {	// 입력값이 8개로 정해져 있으므로
+			int input = scan.nextInt();
+			array[i] = input;
+		}
+		scan.close();
+
+		for(int j=0; j<7; j++) {	// (1,2), (2,3), ..., (7,8) 이렇게 7번 비교
+			if(array[j+1] == array[j] + 1) {	// 오름차순의 경우
+				output = "ascending";
+			}
+			else if(array[j+1] == array[j] - 1) {	// 내림차순의 경우
+				output = "descending";
+			}
+			else {
+				output = "mixed";
+				break;
+			}
+		}
+		System.out.print(output);
+	}
+
+}
